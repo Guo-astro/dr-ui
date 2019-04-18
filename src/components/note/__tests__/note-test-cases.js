@@ -1,7 +1,5 @@
 import React from 'react';
 import Note from '../note';
-import BookImage from '../../book-image/book-image';
-import WarningImage from '../../warning-image/warning-image';
 
 const testCases = {};
 const noRenderCases = {};
@@ -10,8 +8,7 @@ testCases.basicNote = {
   component: Note,
   description: 'A basic note to call out information on a page.',
   props: {
-    children: <p>Here is a little thing to note.</p>,
-    imageComponent: <BookImage size="60" />
+    children: <p>Here is a little thing to note.</p>
   }
 };
 
@@ -43,8 +40,7 @@ testCases.customTitle = {
           malesuada magna mollis euismod.
         </p>
       </div>
-    ),
-    imageComponent: <BookImage size="60" />
+    )
   }
 };
 
@@ -60,8 +56,7 @@ testCases.warning = {
         The API may change without advance notice during the preview period.
         Preview features are not supported for production use.
       </p>
-    ),
-    imageComponent: <WarningImage color="orange" size="60" />
+    )
   }
 };
 
@@ -77,8 +72,21 @@ testCases.error = {
         Did something not go as planned? Check out the{' '}
         <a href="#">troubleshooting guide</a>.
       </p>
-    ),
-    imageComponent: <WarningImage color="red" size="60" />
+    )
+  }
+};
+
+testCases.download = {
+  component: Note,
+  description: 'A note to display installation or download instructions.',
+  props: {
+    theme: 'download',
+    title: 'Download',
+    children: (
+      <p>
+        Download a <strong>thing</strong> from <a href="#">a place</a>.
+      </p>
+    )
   }
 };
 
