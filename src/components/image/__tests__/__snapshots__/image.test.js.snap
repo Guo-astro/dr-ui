@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image Basic renders as expected 1`] = `
+<div
+  className="py24 px24 bg-gray-faint  round"
+>
+  <div />
+  <div
+    className="mt12"
+    style={
+      Object {
+        "color": "#557292",
+      }
+    }
+  >
+    We are having eggs for dinner
+  </div>
+</div>
+`;
+
+exports[`image turn off defaults renders as expected 1`] = `
+<div
+  className=""
+>
+  <div />
+</div>
+`;
