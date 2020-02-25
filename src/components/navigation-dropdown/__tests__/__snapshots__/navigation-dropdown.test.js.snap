@@ -8,8 +8,9 @@ exports[`navigation-dropdown Basic renders as expected 1`] = `
     className="select-container "
   >
     <select
+      aria-label="Navigate this section"
       aria-required={true}
-      className="select select--stroke round-full bg-white"
+      className="select select--stroke select--s round-full bg-white"
       data-test="navigate-this-section-select"
       disabled={false}
       id="navigate-this-section"

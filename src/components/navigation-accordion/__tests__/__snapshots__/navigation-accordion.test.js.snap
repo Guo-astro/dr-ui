@@ -106,7 +106,7 @@ exports[`navigation-accordion Basic renders as expected 1`] = `
     </div>
   </div>
   <div
-    className="none-mm block bg-gray-faint px24 py24"
+    className="none-mm block bg-gray-faint px24 py12"
   >
     <div
       className="relative "
@@ -115,8 +115,9 @@ exports[`navigation-accordion Basic renders as expected 1`] = `
         className="select-container "
       >
         <select
+          aria-label="Navigate this section"
           aria-required={true}
-          className="select select--stroke round-full bg-white"
+          className="select select--stroke select--s round-full bg-white"
           data-test="navigate-this-section-select"
           disabled={false}
           id="navigate-this-section"
@@ -215,7 +216,7 @@ exports[`navigation-accordion No second level items renders as expected 1`] = `
     </div>
   </div>
   <div
-    className="none-mm block bg-gray-faint px24 py24"
+    className="none-mm block bg-gray-faint px24 py12"
   >
     <div
       className="relative "
@@ -224,8 +225,9 @@ exports[`navigation-accordion No second level items renders as expected 1`] = `
         className="select-container "
       >
         <select
+          aria-label="Navigate this section"
           aria-required={true}
-          className="select select--stroke round-full bg-white"
+          className="select select--stroke select--s round-full bg-white"
           data-test="navigate-this-section-select"
           disabled={false}
           id="navigate-this-section"
@@ -386,7 +388,7 @@ exports[`navigation-accordion Shows third level items renders as expected 1`] = 
     </div>
   </div>
   <div
-    className="none-mm block bg-gray-faint px24 py24"
+    className="none-mm block bg-gray-faint px24 py12"
   >
     <div
       className="relative "
@@ -395,8 +397,9 @@ exports[`navigation-accordion Shows third level items renders as expected 1`] = 
         className="select-container "
       >
         <select
+          aria-label="Navigate this section"
           aria-required={true}
-          className="select select--stroke round-full bg-white"
+          className="select select--stroke select--s round-full bg-white"
           data-test="navigate-this-section-select"
           disabled={false}
           id="navigate-this-section"
@@ -647,7 +650,7 @@ exports[`navigation-accordion Shows third level items with icons renders as expe
     </div>
   </div>
   <div
-    className="none-mm block bg-gray-faint px24 py24"
+    className="none-mm block bg-gray-faint px24 py12"
   >
     <div
       className="relative "
@@ -656,8 +659,9 @@ exports[`navigation-accordion Shows third level items with icons renders as expe
         className="select-container "
       >
         <select
+          aria-label="Navigate this section"
           aria-required={true}
-          className="select select--stroke round-full bg-white"
+          className="select select--stroke select--s round-full bg-white"
           data-test="navigate-this-section-select"
           disabled={false}
           id="navigate-this-section"
@@ -923,7 +927,7 @@ exports[`navigation-accordion Titles with tags renders as expected 1`] = `
     </div>
   </div>
   <div
-    className="none-mm block bg-gray-faint px24 py24"
+    className="none-mm block bg-gray-faint px24 py12"
   >
     <div
       className="relative "
@@ -932,8 +936,9 @@ exports[`navigation-accordion Titles with tags renders as expected 1`] = `
         className="select-container "
       >
         <select
+          aria-label="Navigate this section"
           aria-required={true}
-          className="select select--stroke round-full bg-white"
+          className="select select--stroke select--s round-full bg-white"
           data-test="navigate-this-section-select"
           disabled={false}
           id="navigate-this-section"

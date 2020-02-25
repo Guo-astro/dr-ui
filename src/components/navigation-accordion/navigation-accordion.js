@@ -235,7 +235,7 @@ class NavigationAccordion extends React.PureComponent {
     return (
       <div className="dr-ui--navigation-accordion">
         <div className="block-mm none">{firstLevelContent}</div>
-        <div className="none-mm block bg-gray-faint px24 py24">
+        <div className="none-mm block bg-gray-faint px24 py12">
           <NavigationDropdown
             currentPath={props.currentPath}
             dropdownOptions={props.contents.firstLevelItems}

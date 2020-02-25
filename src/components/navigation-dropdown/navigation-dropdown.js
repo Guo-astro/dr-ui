@@ -21,7 +21,8 @@ class NavigationDropdown extends React.Component {
         onChange={props.onChange}
         value={currentOption.value}
         options={optionsArray}
-        themeControlSelect="select--stroke round-full bg-white"
+        aria-label="Navigate this section"
+        themeControlSelect="select--stroke select--s round-full bg-white"
       />
     );
   }

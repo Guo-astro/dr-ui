@@ -450,7 +450,7 @@ exports[`search Search with \`narrow\` option set renders as expected 2`] = `
                   </div>
                 </div>
                 <div
-                  className="none-mm block bg-gray-faint px24 py24"
+                  className="none-mm block bg-gray-faint px24 py12"
                 >
                   <div
                     className="relative "
@@ -459,8 +459,9 @@ exports[`search Search with \`narrow\` option set renders as expected 2`] = `
                       className="select-container "
                     >
                       <select
+                        aria-label="Navigate this section"
                         aria-required={true}
-                        className="select select--stroke round-full bg-white"
+                        className="select select--stroke select--s round-full bg-white"
                         data-test="navigate-this-section-select"
                         disabled={false}
                         id="navigate-this-section"
