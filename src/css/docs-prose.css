@@ -16,11 +16,21 @@
   margin: 36px 0px 18px;
 }
 
+/* add back padding that is lost when sections are wrapped */
+#docs-content .section-h2 h2 {
+  padding-top: 36px !important;
+}
+
 /* set sizing for h3 */
 #docs-content .prose h3,
 #docs-content.prose h3 {
   font-weight: normal;
   font-size: 24px;
+}
+
+/* add back padding that is lost when sections are wrapped */
+#docs-content .section-h3 h3 {
+  padding-top: 24px !important;
 }
 
 /* add extra margin to prevent TopbarSticker from overlapping jump anchors */
