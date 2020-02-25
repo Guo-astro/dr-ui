@@ -1,3 +1,4 @@
+/* set sizing and spacing for h1 */
 #docs-content .prose h1,
 #docs-content.prose h1 {
   margin-top: 6px;
@@ -5,21 +6,33 @@
   font-size: 36px;
 }
 
+/* set sizing and spacing for h2 */
 #docs-content .prose h2,
 #docs-content.prose h2 {
   font-weight: normal !important;
   font-size: 30px;
   border-top: 1px solid !important;
   border-color: #d6dee8 !important;
-  padding-top: 60px;
   margin: 36px 0px 18px;
 }
 
+/* set sizing for h3 */
 #docs-content .prose h3,
 #docs-content.prose h3 {
   font-weight: normal;
   font-size: 24px;
-  padding-top: 40px;
+}
+
+/* add extra margin to prevent TopbarSticker from overlapping jump anchors */
+@media screen and (min-width: 640px) {
+  #docs-content .prose h2,
+  #docs-content.prose h2,
+  #docs-content .prose h3,
+  #docs-content.prose h3,
+  #docs-content .prose h4,
+  #docs-content.prose h4 {
+    scroll-margin-top: 50px;
+  }
 }
 
 /* make links darker in Note to improve color contrast */
@@ -58,6 +71,7 @@
   background: transparent;
 }
 
+/* ability to add `scroll-auto` only on larger devices */
 @media screen and (min-width: 640px) {
   .scroll-auto-mm {
     overflow: auto !important;
