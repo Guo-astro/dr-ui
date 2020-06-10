@@ -8,21 +8,19 @@ class PageLayout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      topValue: 0,
       bottomBoundaryValue: 0,
       stickyEnabled: false
     };
     this.debounceHandleWindowResize = debounce(() => {
       const width = document.body.clientWidth;
-      if (width < 640) {
-        this.setState({
-          topValue: this.props.sidebarContentStickyTopNarrow
-        });
-      } else {
-        this.setState({
-          topValue: this.props.sidebarContentStickyTop
-        });
-      }
       const height = document.body.clientHeight;
+      this.setState({
+        topValue:
+          width < 640
+            ? this.props.sidebarContentStickyTopNarrow
+            : this.props.sidebarContentStickyTop
+      });
       this.setState({
         bottomBoundaryValue: height - 150
       });
@@ -35,90 +33,79 @@ class PageLayout extends React.Component {
       this.setState({ stickyEnabled: true });
     }, 500);
     window.addEventListener('resize', this.debounceHandleWindowResize);
-    // when available, the page will recalculate the height of the page when a user clicks an element with the given class name
-    if (this.props.interactiveClass) {
-      const interactiveClass = document.getElementsByClassName(
-        this.props.interactiveClass
-      );
-      for (let i = 0; i < interactiveClass.length; i++) {
-        interactiveClass[i].addEventListener(
-          'click',
-          this.debounceHandleWindowResize
-        );
-      }
-    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.debounceHandleWindowResize);
-    if (this.props.interactiveClass) {
-      const interactiveClass = document.getElementsByClassName(
-        this.props.interactiveClass
-      );
-      for (let i = 0; i < interactiveClass.length; i++) {
-        interactiveClass[i].removeEventListener(
-          'click',
-          this.debounceHandleWindowResize
-        );
-      }
-    }
   }
 
+  renderTitle = title => {
+    return (
+      <div className="txt-l color-blue txt-fancy mb12 block-mm none mx24">
+        {title}
+      </div>
+    );
+  };
+
   render() {
-    const { props, state } = this;
-    let title = '';
-    if (props.sidebarTitle) {
-      title = (
-        <div className="txt-l color-blue txt-fancy mb12 block-mm none mx24">
-          {props.sidebarTitle}
-        </div>
-      );
-    }
+    const {
+      sidebarTitle,
+      sidebarStackedOnNarrowScreens,
+      sideBarColSize,
+      children,
+      sidebarTheme,
+      sidebarContent,
+      fullSidebarHeight
+    } = this.props;
+    const { stickyEnabled, bottomBoundaryValue, topValue } = this.state;
 
     const sidebarNarrowClasses = classnames({
-      block: props.sidebarStackedOnNarrowScreens,
-      'none block-mm': !props.sidebarStackedOnNarrowScreens
+      block: sidebarStackedOnNarrowScreens,
+      'none block-mm': !sidebarStackedOnNarrowScreens
     });
 
     // if available, sets col--#-ml size for the sidebar and content elements. If the value is outside of the range, it will not set the col--#-ml values and defer to the default col sizes
-    let sideBarColSize = null;
-    if (
-      props.sideBarColSize &&
-      props.sideBarColSize > 2 &&
-      props.sideBarColSize < 7
-    )
-      sideBarColSize = props.sideBarColSize;
+    const adjustedColSize =
+      sideBarColSize && sideBarColSize > 2 && sideBarColSize < 7
+        ? sideBarColSize
+        : null;
 
     return (
       <div className="grid">
         <div
           className={`col col--4-mm ${
-            sideBarColSize ? `col--${sideBarColSize}-ml` : ''
-          } col--12 ${props.sidebarTheme}`}
+            adjustedColSize ? `col--${adjustedColSize}-ml` : ''
+          } col--12 ${sidebarTheme}`}
           data-swiftype-index="false"
         >
           <Sticky
-            enabled={state.stickyEnabled}
-            bottomBoundary={state.bottomBoundaryValue}
+            enabled={stickyEnabled}
+            bottomBoundary={bottomBoundaryValue}
             innerZ={3}
-            top={state.topValue}
+            top={topValue}
           >
             <div
-              className={`pt12-mm pt0 viewport-almost-mm scroll-auto-mm scroll-styled ${sidebarNarrowClasses}`}
+              className={classnames(
+                `pt12-mm pt0 scroll-auto-mm scroll-styled ${sidebarNarrowClasses}`,
+                {
+                  'viewport-almost-mm': !fullSidebarHeight,
+                  'viewport-mm': fullSidebarHeight
+                }
+              )}
               id="dr-ui--page-layout-sidebar"
             >
-              {title}
-              {props.sidebarContent}
+              {sidebarTitle && this.renderTitle(sidebarTitle)}
+              {sidebarContent}
             </div>
           </Sticky>
         </div>
         <div
           id="docs-content"
           className={`col col--8-mm ${
-            sideBarColSize ? `col--${12 - sideBarColSize}-ml` : ''
+            adjustedColSize ? `col--${12 - adjustedColSize}-ml` : ''
           } col--12 mt24-mm mb60 pr0-mm px36-mm`}
         >
-          {props.children}
+          {children}
         </div>
       </div>
     );
@@ -129,17 +116,20 @@ PageLayout.propTypes = {
   sidebarContent: PropTypes.node.isRequired,
   sidebarTitle: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   sidebarTheme: PropTypes.string,
-  sidebarContentStickyTop: PropTypes.number.isRequired,
-  sidebarContentStickyTopNarrow: PropTypes.number.isRequired,
+  sidebarContentStickyTop: PropTypes.number,
+  sidebarContentStickyTopNarrow: PropTypes.number,
   sidebarStackedOnNarrowScreens: PropTypes.bool,
   sideBarColSize: PropTypes.number, // accepts numbers 3 - 6 to change the column width of the sidebar at the -ml breakpoint
-  interactiveClass: PropTypes.string, // the class name of an interactive element, when clicked PageLayout will recalculate the height of the page and sizing for the the sidebar
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  fullSidebarHeight: PropTypes.bool // if true, set the sidebar to the full width of the document body
 };
 
 PageLayout.defaultProps = {
   sidebarTheme: 'bg-gray-faint',
-  sidebarStackedOnNarrowScreens: false
+  sidebarStackedOnNarrowScreens: false,
+  sidebarContentStickyTop: 60,
+  sidebarContentStickyTopNarrow: 0,
+  fullSidebarHeight: false
 };
 
 export default PageLayout;

@@ -117,7 +117,7 @@ exports[`feedback Feedback placement (sends anonymous user information) renders 
           style={Object {}}
         >
           <div
-            className="sticky-inner-wrapper"
+            className="sticky-inner-wrapper "
             style={
               Object {
                 "position": "relative",
@@ -127,7 +127,7 @@ exports[`feedback Feedback placement (sends anonymous user information) renders 
             }
           >
             <div
-              className="pt12-mm pt0 viewport-almost-mm scroll-auto-mm scroll-styled block"
+              className="pt12-mm pt0 scroll-auto-mm scroll-styled block viewport-almost-mm"
               id="dr-ui--page-layout-sidebar"
             >
               <div

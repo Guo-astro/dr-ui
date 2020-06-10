@@ -320,7 +320,7 @@ exports[`search Search with \`narrow\` option set renders as expected 2`] = `
           style={Object {}}
         >
           <div
-            className="sticky-inner-wrapper"
+            className="sticky-inner-wrapper "
             style={
               Object {
                 "position": "relative",
@@ -330,7 +330,7 @@ exports[`search Search with \`narrow\` option set renders as expected 2`] = `
             }
           >
             <div
-              className="pt12-mm pt0 viewport-almost-mm scroll-auto-mm scroll-styled block"
+              className="pt12-mm pt0 scroll-auto-mm scroll-styled block viewport-almost-mm"
               id="dr-ui--page-layout-sidebar"
             >
               <div
