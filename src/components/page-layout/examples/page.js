@@ -1,5 +1,5 @@
 /*
-Basic.
+"page" layout.
 */
 import React from 'react';
 import PageLayout from '../page-layout';
@@ -8,19 +8,25 @@ export default class Basic extends React.Component {
   render() {
     return (
       <PageLayout
-        sidebarTitle="My page title"
-        sidebarContent={
-          <div className="px24">
-            <a className="link block mb6" href="#section-1">
-              Section 1
-            </a>
-            <a className="link block mb6" href="#section-2">
-              Section 2
-            </a>
-          </div>
-        }
-        sidebarContentStickyTop={0}
-        sidebarContentStickyTopNarrow={0}
+        feedback={{
+          site: 'dr-ui',
+          webhook: {
+            production: '123',
+            staging: '123'
+          }
+        }}
+        location={{
+          pathname: '/dr-ui/'
+        }}
+        frontMatter={{
+          title: 'Overview',
+          headings: [
+            { text: 'Section 1', slug: 'section-1', level: 2 },
+            { text: 'Section 2', slug: 'section-2', level: 2 }
+          ]
+        }}
+        layout="page"
+        navigation={{}}
       >
         <div className="prose">
           <h1>PageLayout</h1>
