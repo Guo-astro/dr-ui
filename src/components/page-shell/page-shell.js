@@ -45,7 +45,7 @@ export default class PageShell extends React.Component {
     const meta = buildMeta(frontMatter, location.pathname, navigation);
 
     return (
-      <React.Fragment>
+      <div>
         <Helmet>
           <link
             rel="canonical"
@@ -75,7 +75,7 @@ export default class PageShell extends React.Component {
         >
           {children}
         </PageLayout>
-      </React.Fragment>
+      </div>
     );
   }
 }
