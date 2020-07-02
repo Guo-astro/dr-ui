@@ -153,8 +153,6 @@ exports[`search Search with \`narrow\` option set renders as expected 1`] = `
 </div>
 `;
 
-exports[`search Search with \`narrow\` option set renders as expected 2`] = `undefined`;
-
 exports[`search Search with custom connector renders as expected 1`] = `
 <div
   className="h36 relative"

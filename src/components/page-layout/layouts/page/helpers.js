@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 export function buildSections(headings) {
+  if (!headings) return [];
   return headings
     .filter((heading) => heading.level === 2 || heading.level === 3)
     .map((heading) => ({

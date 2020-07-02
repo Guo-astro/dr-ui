@@ -60,8 +60,6 @@ export default class Sidebar extends React.Component {
       topics
     } = this.props;
 
-    console.log('parentPath', parentPath);
-
     switch (layout) {
       case 'accordion':
         return (

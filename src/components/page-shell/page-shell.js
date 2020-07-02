@@ -90,6 +90,13 @@ export default class PageShell extends React.Component {
   }
 }
 
+PageShell.defaultProps = {
+  frontMatter: {
+    hideFeedback: false,
+    layout: 'page'
+  }
+};
+
 PageShell.propTypes = {
   frontMatter: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -100,7 +107,7 @@ PageShell.propTypes = {
     headings: PropTypes.array,
     layout: PropTypes.string,
     hideFeedback: PropTypes.bool
-  }).isRequired,
+  }),
   children: PropTypes.node.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
@@ -112,7 +119,7 @@ PageShell.propTypes = {
     path: PropTypes.string,
     accordion: PropTypes.object
   }).isRequired,
-  topics: PropTypes.object.isRequired,
+  topics: PropTypes.object,
   constants: PropTypes.shape({
     SITE: PropTypes.string.isRequired,
     BASEURL: PropTypes.string.isRequired,

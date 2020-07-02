@@ -1,7 +1,6 @@
 import React from 'react';
 import components from './data/components'; // eslint-disable-line
 import ComponentSection from './components/component-section';
-import Sidebar from './components/sidebar';
 import Topbar from '../../src/components/topbar';
 import ProductMenu from '../../src/components/product-menu';
 import OverviewHeader from '../../src/components/overview-header';
@@ -9,7 +8,25 @@ import Note from '../../src/components/note';
 import PageLayout from '../../src/components/page-layout';
 import categories from './categories.json';
 
+const slug = (string) => string.toLowerCase();
+
 const version = require('../../package.json').version;
+
+const topics = {
+  '/dr-ui/': {
+    topics: Object.keys(categories).map((category) => ({
+      name: category,
+      url: `#${slug(category)}`,
+      id: `${slug(category)}`,
+      pages: categories[category].map((item) => ({
+        text: item,
+        url: `#${slug(item)}`
+      }))
+    }))
+  }
+};
+
+console.log('topics', topics);
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -52,12 +69,18 @@ export default class App extends React.Component {
             </div>
           </div>
         </Topbar>
-        <div className="limiter">
+        <div>
           <PageLayout
-            sideBarColSize={3}
-            sidebarContentStickyTop={0}
-            sidebarContentStickyTopNarrow={0}
-            sidebarContent={<Sidebar />}
+            parentPath="/dr-ui/"
+            layout="example"
+            topics={topics}
+            frontMatter={{
+              title: 'Overview',
+              description: 'UI components for Mapbox documentation projects.',
+              hideFeedback: true
+            }}
+            constants={{ SITE: 'dr-ui' }}
+            navigiation={{}}
           >
             <div className="prose">
               <OverviewHeader
