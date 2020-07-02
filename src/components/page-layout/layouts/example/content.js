@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppropriateImage from './appropriate-image';
 import ExamplesPage from '../../../examples-page/examples-page';
 import CardContainer from '../../../card-container/card-container';
 import Card from '../../../card/card';
 
 export default class LayoutExamples extends React.PureComponent {
   render() {
-    const { topics, frontMatter } = this.props;
+    const { topics, frontMatter, AppropriateImage } = this.props;
 
     const renderedCardContainers = topics.map((topic, i) => {
       const cardsForTopic = topic.pages.map((page) => {
@@ -53,5 +52,6 @@ export default class LayoutExamples extends React.PureComponent {
 
 LayoutExamples.propTypes = {
   topics: PropTypes.array,
-  frontMatter: PropTypes.object.isRequired
+  frontMatter: PropTypes.object.isRequired,
+  AppropriateImage: PropTypes.func.isRequired
 };

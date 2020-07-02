@@ -48,7 +48,8 @@ PageLayout.propTypes = {
     navTabs: PropTypes.array,
     path: PropTypes.string,
     accordion: PropTypes.object
-  }).isRequired
+  }).isRequired,
+  AppropriateImage: PropTypes.func
 };
 
 PageLayout.defaultProps = {

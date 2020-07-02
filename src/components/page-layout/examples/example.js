@@ -4,6 +4,16 @@
 import React from 'react';
 import PageLayout from '../page-layout';
 
+import { scopeAppropriateImage } from '@mapbox/appropriate-images-react';
+
+const AppropriateImage = scopeAppropriateImage({
+  'header-image': {
+    basename: 'header-image.png',
+    path: 'header-image.png',
+    sizes: [{ width: 480 }, { width: 960 }]
+  }
+});
+
 export default class Basic extends React.Component {
   render() {
     return (
@@ -24,6 +34,7 @@ export default class Basic extends React.Component {
           description: 'Lots of handy examples.',
           navOrder: 1
         }}
+        AppropriateImage={AppropriateImage}
         layout="example"
         navigation={{}}
         topics={{

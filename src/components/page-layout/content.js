@@ -7,12 +7,13 @@ import { UserContextProvider } from './user-context';
 
 export default class Content extends React.Component {
   renderExamplesIndex = () => {
-    const { frontMatter, parentPath, topics } = this.props;
+    const { frontMatter, parentPath, topics, AppropriateImage } = this.props;
     return (
       <LayoutExamples
         topics={topics[parentPath].topics}
         frontMatter={frontMatter}
         sectionPath={parentPath}
+        AppropriateImage={AppropriateImage}
       />
     );
   };
@@ -77,5 +78,6 @@ Content.propTypes = {
     site: PropTypes.string.isRequired,
     webhook: PropTypes.object.isRequired,
     section: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  AppropriateImage: PropTypes.func
 };

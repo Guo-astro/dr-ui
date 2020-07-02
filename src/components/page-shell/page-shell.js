@@ -10,6 +10,13 @@ import {
   findParentPath
 } from '../page-layout/utils';
 
+const environment =
+  typeof window !== 'undefined'
+    ? /(^|\S+\.)mapbox\.com/.test(window.location.host)
+      ? 'production'
+      : 'staging'
+    : undefined;
+
 export default class PageShell extends React.Component {
   componentDidMount() {
     // initialize analytics
@@ -17,7 +24,8 @@ export default class PageShell extends React.Component {
       window.initializeMapboxAnalytics();
     }
     Sentry.init({
-      dsn: 'https://6ba8cfeeedad4fb7acb8576f0fd6e266@sentry.io/1384508'
+      dsn: 'https://6ba8cfeeedad4fb7acb8576f0fd6e266@sentry.io/1384508',
+      environment
     });
   }
 
@@ -28,7 +36,8 @@ export default class PageShell extends React.Component {
       frontMatter,
       navigation,
       topics,
-      constants
+      constants,
+      AppropriateImage
     } = this.props;
     const { hideFeedback, layout } = this.props.frontMatter;
 
@@ -72,6 +81,7 @@ export default class PageShell extends React.Component {
             hideFeedback,
             hasSection
           }}
+          AppropriateImage={AppropriateImage}
         >
           {children}
         </PageLayout>
@@ -110,5 +120,6 @@ PageShell.propTypes = {
       production: PropTypes.string.isRequired,
       staging: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  AppropriateImage: PropTypes.func
 };
