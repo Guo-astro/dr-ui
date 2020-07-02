@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TopbarSticker from '../topbar-sticker/topbar-sticker';
-import ProductMenu from '../product-menu/product-menu';
-import Search from '../search/search';
-import TabList from '../tab-list/tab-list';
+import TopbarSticker from '../../topbar-sticker/topbar-sticker';
+import ProductMenu from '../../product-menu/product-menu';
+import Search from '../../search/search';
+import TabList from '../../tab-list/tab-list';
 
 export default class Topbar extends React.Component {
   render() {

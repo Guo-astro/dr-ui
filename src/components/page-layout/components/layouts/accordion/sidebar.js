@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { routeToPrefixed } from '@mapbox/batfish/modules/route-to';
-import NavigationAccordion from '../../../navigation-accordion/navigation-accordion';
+import NavigationAccordion from '../../../../navigation-accordion/navigation-accordion';
 import { buildSecondLevel } from './helpers';
 
 export default class SidebarAccordion extends React.PureComponent {

@@ -18,9 +18,10 @@ export default class Basic extends React.Component {
   render() {
     return (
       <PageLayout
-        feedback={{
-          site: 'dr-ui',
-          webhook: {
+        constants={{
+          SITE: 'dr-ui',
+          BASEURL: '/dr-ui',
+          FORWARD_EVENT_WEBHOOK: {
             production: '123',
             staging: '123'
           }
@@ -28,15 +29,43 @@ export default class Basic extends React.Component {
         location={{
           pathname: '/PageLayout/'
         }}
-        parentPath="/PageLayout/"
         frontMatter={{
           title: 'Examples',
+          layout: 'example',
           description: 'Lots of handy examples.',
           navOrder: 1
         }}
         AppropriateImage={AppropriateImage}
-        layout="example"
-        navigation={{}}
+        navigation={{
+          hierarchy: {
+            '/PageLayout/': {
+              parent: '/dr-ui/',
+              title: 'Demo'
+            }
+          },
+          navTabs: [
+            {
+              href: '/PageLayout/',
+              id: '/PageLayout/',
+              label: 'Overview'
+            },
+            {
+              href: '/PageLayout/specification/',
+              id: '/PageLayout/specification/',
+              label: 'Specification'
+            },
+            {
+              href: '/PageLayout/examples/',
+              id: '/PageLayout/examples/',
+              label: 'Examples'
+            },
+            {
+              href: '/PageLayout/demo/',
+              id: '/PageLayout/demo/',
+              label: 'Demo'
+            }
+          ]
+        }}
         topics={{
           '/PageLayout/': {
             contentType: 'example',

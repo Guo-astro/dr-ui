@@ -26,8 +26,6 @@ const topics = {
   }
 };
 
-console.log('topics', topics);
-
 export default class App extends React.Component {
   componentDidMount() {
     // override SectionedNavigation scroll

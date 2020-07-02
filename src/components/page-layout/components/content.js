@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Feedback from '../feedback/feedback';
+import Feedback from '../../feedback/feedback';
 import LayoutExamples from './layouts/example/content.js';
-import { UserContextProvider } from './user-context';
+import { UserContextProvider } from '../context/user-context';
 
 export default class Content extends React.Component {
   renderExamplesIndex = () => {
@@ -19,16 +19,16 @@ export default class Content extends React.Component {
   };
 
   renderFeedback = () => {
-    const { frontMatter, location } = this.props;
-    const { site, section, webhook } = this.props.feedback;
+    const { frontMatter, location, section } = this.props;
+    const { SITE, FORWARD_EVENT_WEBHOOK } = this.props.constants;
     return (
       <div className="mt36">
         <Feedback
           type={frontMatter.layout === 'example' ? 'example' : ''}
-          site={site}
+          site={SITE}
           location={location}
           section={section}
-          webhook={webhook}
+          webhook={FORWARD_EVENT_WEBHOOK}
         />
       </div>
     );
@@ -74,10 +74,14 @@ Content.propTypes = {
   location: PropTypes.object.isRequired,
   parentPath: PropTypes.string,
   topics: PropTypes.object,
-  feedback: PropTypes.shape({
-    site: PropTypes.string.isRequired,
-    webhook: PropTypes.object.isRequired,
-    section: PropTypes.string
-  }).isRequired,
-  AppropriateImage: PropTypes.func
+  AppropriateImage: PropTypes.func,
+  section: PropTypes.string,
+  constants: PropTypes.shape({
+    SITE: PropTypes.string.isRequired,
+    BASEURL: PropTypes.string.isRequired,
+    FORWARD_EVENT_WEBHOOK: PropTypes.shape({
+      production: PropTypes.string.isRequired,
+      staging: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };

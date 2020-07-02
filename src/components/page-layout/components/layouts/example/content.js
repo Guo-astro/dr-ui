@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExamplesPage from '../../../examples-page/examples-page';
-import CardContainer from '../../../card-container/card-container';
-import Card from '../../../card/card';
+import ExamplesPage from '../../../../examples-page/examples-page';
+import CardContainer from '../../../../card-container/card-container';
+import Card from '../../../../card/card';
 
 export default class LayoutExamples extends React.PureComponent {
   render() {

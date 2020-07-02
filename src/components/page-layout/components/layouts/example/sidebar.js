@@ -1,5 +1,5 @@
 import React from 'react';
-import SectionedNavigation from '../../../sectioned-navigation/sectioned-navigation';
+import SectionedNavigation from '../../../../sectioned-navigation/sectioned-navigation';
 import PropTypes from 'prop-types';
 
 export default class SidebarExamples extends React.PureComponent {

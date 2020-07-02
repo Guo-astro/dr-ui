@@ -28,7 +28,11 @@ export function findHasSection(navigation, pathname) {
 }
 
 export function findParentPath(navigation, pathname) {
-  return navigation.hierarchy[pathname] && navigation.hierarchy[pathname].parent
+  return navigation &&
+    pathname &&
+    navigation.hierarchy &&
+    navigation.hierarchy[pathname] &&
+    navigation.hierarchy[pathname].parent
     ? navigation.hierarchy[pathname].parent
     : undefined;
 }

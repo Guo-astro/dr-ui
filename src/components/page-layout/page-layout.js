@@ -1,26 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Content from './content';
-import Sidebar from './sidebar';
+import Content from './components/content';
+import Sidebar from './components/sidebar';
+import Topbar from './components/topbar';
+import { findHasSection, findParentPath } from './utils';
 
 export default class PageLayout extends React.Component {
   render() {
-    const { sidebarTheme, layout } = this.props;
+    const { location, navigation, constants, sidebarTheme } = this.props;
+
+    const { layout } = this.props.frontMatter;
+    // determine's if this is a single or multli-level site (the latter has sections)
+    const hasSection = findHasSection(navigation, location.pathname);
+    // get the parent's path, we need this for the top nav
+    const parentPath = findParentPath(navigation, location.pathname);
+    // if page has `section` then switch to multi-page
+    const switchedNavigation = hasSection
+      ? navigation[hasSection.path]
+      : navigation;
+
     return (
-      <div className="limiter">
-        <div className="grid">
-          {layout !== 'full' && (
-            <div className={`col col--4-mm col--12 ${sidebarTheme}`}>
-              <Sidebar {...this.props} />
+      <div>
+        <div className="shell-header-buffer" />
+        <Topbar
+          constants={constants}
+          navigation={switchedNavigation}
+          parentPath={parentPath}
+        />
+        <div className="limiter">
+          <div className="grid">
+            {layout !== 'full' && (
+              <div className={`col col--4-mm col--12 ${sidebarTheme}`}>
+                <Sidebar {...this.props} />
+              </div>
+            )}
+            <div
+              className={classnames('col col--12', {
+                'col--8-mm': layout !== 'full'
+              })}
+            >
+              <Content {...this.props} />
             </div>
-          )}
-          <div
-            className={classnames('col col--12', {
-              'col--8-mm': layout !== 'full'
-            })}
-          >
-            <Content {...this.props} />
           </div>
         </div>
       </div>
@@ -29,19 +50,14 @@ export default class PageLayout extends React.Component {
 }
 
 PageLayout.propTypes = {
-  layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full']),
   children: PropTypes.node,
   frontMatter: PropTypes.shape({
-    hideFeedback: PropTypes.bool
-  }).isRequired,
+    hideFeedback: PropTypes.bool,
+    layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full'])
+  }),
   location: PropTypes.object.isRequired,
   sidebarTheme: PropTypes.string,
   parentPath: PropTypes.string,
-  feedback: PropTypes.shape({
-    site: PropTypes.string.isRequired,
-    webhook: PropTypes.object.isRequired,
-    section: PropTypes.string
-  }).isRequired,
   navigation: PropTypes.shape({
     title: PropTypes.string,
     tag: PropTypes.string,
@@ -49,10 +65,20 @@ PageLayout.propTypes = {
     path: PropTypes.string,
     accordion: PropTypes.object
   }).isRequired,
+  constants: PropTypes.shape({
+    SITE: PropTypes.string.isRequired,
+    BASEURL: PropTypes.string.isRequired,
+    FORWARD_EVENT_WEBHOOK: PropTypes.shape({
+      production: PropTypes.string.isRequired,
+      staging: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
   AppropriateImage: PropTypes.func
 };
 
 PageLayout.defaultProps = {
   sidebarTheme: 'bg-gray-faint',
-  layout: 'page'
+  frontMatter: {
+    layout: 'page'
+  }
 };

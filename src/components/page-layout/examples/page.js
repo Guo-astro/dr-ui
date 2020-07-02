@@ -8,15 +8,16 @@ export default class Basic extends React.Component {
   render() {
     return (
       <PageLayout
-        feedback={{
-          site: 'dr-ui',
-          webhook: {
+        constants={{
+          SITE: 'dr-ui',
+          BASEURL: '/dr-ui',
+          FORWARD_EVENT_WEBHOOK: {
             production: '123',
             staging: '123'
           }
         }}
         location={{
-          pathname: '/dr-ui/'
+          pathname: '/PageLayout/'
         }}
         frontMatter={{
           title: 'Overview',
@@ -25,8 +26,36 @@ export default class Basic extends React.Component {
             { text: 'Section 2', slug: 'section-2', level: 2 }
           ]
         }}
-        layout="page"
-        navigation={{}}
+        navigation={{
+          hierarchy: {
+            '/PageLayout/': {
+              parent: '/dr-ui/',
+              title: 'Demo'
+            }
+          },
+          navTabs: [
+            {
+              href: '/PageLayout/',
+              id: '/PageLayout/',
+              label: 'Overview'
+            },
+            {
+              href: '/PageLayout/specification/',
+              id: '/PageLayout/specification/',
+              label: 'Specification'
+            },
+            {
+              href: '/PageLayout/examples/',
+              id: '/PageLayout/examples/',
+              label: 'Examples'
+            },
+            {
+              href: '/PageLayout/demo/',
+              id: '/PageLayout/demo/',
+              label: 'Demo'
+            }
+          ]
+        }}
       >
         <React.Fragment>
           <h1>PageLayout</h1>
