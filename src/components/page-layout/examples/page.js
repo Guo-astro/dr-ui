@@ -28,7 +28,7 @@ export default class Basic extends React.Component {
         layout="page"
         navigation={{}}
       >
-        <div className="prose">
+        <React.Fragment>
           <h1>PageLayout</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -59,7 +59,7 @@ export default class Basic extends React.Component {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-        </div>
+        </React.Fragment>
       </PageLayout>
     );
   }

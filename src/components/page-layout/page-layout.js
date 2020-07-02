@@ -30,7 +30,7 @@ export default class PageLayout extends React.Component {
 
 PageLayout.propTypes = {
   layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full']),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   frontMatter: PropTypes.shape({
     hideFeedback: PropTypes.bool
   }).isRequired,

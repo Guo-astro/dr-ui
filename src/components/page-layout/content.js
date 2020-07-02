@@ -62,7 +62,7 @@ export default class Content extends React.Component {
 }
 
 Content.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   layout: PropTypes.string.isRequired,
   frontMatter: PropTypes.shape({
     title: PropTypes.string.isRequired,

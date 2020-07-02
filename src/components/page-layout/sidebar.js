@@ -60,6 +60,8 @@ export default class Sidebar extends React.Component {
       topics
     } = this.props;
 
+    console.log('parentPath', parentPath);
+
     switch (layout) {
       case 'accordion':
         return (
@@ -119,7 +121,7 @@ Sidebar.propTypes = {
   headings: PropTypes.array,
   layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full']),
   frontMatter: PropTypes.object.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   parentPath: PropTypes.string,
   topics: PropTypes.object
 };
