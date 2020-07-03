@@ -54,6 +54,7 @@ export default class App extends React.Component {
     });
     return (
       <PageLayout
+        topBarSticker={false}
         parentPath="/dr-ui/"
         layout="example"
         topics={topics}

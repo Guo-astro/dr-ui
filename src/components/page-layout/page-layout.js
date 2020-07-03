@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Content from './components/content';
 import Sidebar from './components/sidebar';
-import Topbar from './components/topbar';
+import PageLayoutTopbar from './components/topbar';
 import { findHasSection, findParentPath } from './utils';
 
 export default class PageLayout extends React.Component {
   render() {
-    const { location, navigation, constants, sidebarTheme } = this.props;
+    const {
+      location,
+      navigation,
+      constants,
+      sidebarTheme,
+      topBarSticker
+    } = this.props;
 
     const { layout } = this.props.frontMatter;
     // determine's if this is a single or multli-level site (the latter has sections)
@@ -23,10 +29,11 @@ export default class PageLayout extends React.Component {
     return (
       <div>
         <div className="shell-header-buffer" />
-        <Topbar
+        <PageLayoutTopbar
           constants={constants}
           navigation={switchedNavigation}
           parentPath={parentPath}
+          topBarSticker={topBarSticker}
         />
         <div className="limiter">
           <div className="grid">
@@ -73,7 +80,8 @@ PageLayout.propTypes = {
       staging: PropTypes.string.isRequired
     }).isRequired
   }).isRequired,
-  AppropriateImage: PropTypes.func
+  AppropriateImage: PropTypes.func, // pass the local AppropriateImage component to use with "example" layout
+  topBarSticker: PropTypes.bool // disable TopBarSticker
 };
 
 PageLayout.defaultProps = {
