@@ -97,6 +97,7 @@
     "compare-versions": "^3.4.0",
     "debounce": "^1.2.0",
     "downshift": "^3.2.7",
+    "fuse.js": "^6.4.0",
     "hastscript": "^5.0.0",
     "prismjs": "^1.18.0",
     "react-app-polyfill": "^1.0.5",

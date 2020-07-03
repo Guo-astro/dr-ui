@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarSearch Basic renders as expected 1`] = `
+<div
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-labelledby="api-reference-search-label"
+  aria-owns={null}
+  role="combobox"
+>
+  <div
+    className="relative"
+  >
+    <label
+      className="hide-visually"
+      htmlFor="api-reference-search-input"
+      id="api-reference-search-label"
+    >
+      Search my library of rare books
+    </label>
+    <input
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls={null}
+      aria-labelledby="api-reference-search-label"
+      autoComplete="off"
+      className="input bg-white"
+      id="api-reference-search-input"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Search my library of rare books"
+      value=""
+    />
+  </div>
+</div>
+`;
