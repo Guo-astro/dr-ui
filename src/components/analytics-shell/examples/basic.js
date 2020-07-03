@@ -1,5 +1,5 @@
 /*
-Basic.
+The AnalyticsShell adds: Sentry and @mapbox/web-analytics
 */
 import React from 'react';
 import AnalyticsShell from '../analytics-shell';

@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
+import { version } from '../../../package.json';
 
 const environment =
   typeof window !== 'undefined'
@@ -12,28 +13,34 @@ const environment =
 
 export default class AnalyticsShell extends React.Component {
   componentDidMount() {
+    const {
+      disableWebAnalytics,
+      disableSentry,
+      webAnalytics,
+      sentry
+    } = this.props;
     // initialize analytics
-    if (window && window.initializeMapboxAnalytics) {
+    if (window && window.initializeMapboxAnalytics && !disableWebAnalytics) {
       window.initializeMapboxAnalytics({
-        ...this.props.mapboxSettings
+        ...webAnalytics
       });
     }
     // initialize Sentry
-    Sentry.init({
-      ...this.props.sentrySettings,
-      environment
-    });
+    if (!disableSentry) {
+      Sentry.init({
+        ...sentry,
+        release: version,
+        environment
+      });
+    }
   }
 
   render() {
-    const { location, children } = this.props;
+    const { location, children, domain } = this.props;
     return (
       <div>
         <Helmet>
-          <link
-            rel="canonical"
-            href={`https://docs.mapbox.com${location.pathname}`}
-          />
+          <link rel="canonical" href={`${domain}${location.pathname}`} />
         </Helmet>
         {children}
       </div>
@@ -42,10 +49,22 @@ export default class AnalyticsShell extends React.Component {
 }
 
 AnalyticsShell.defaultProps = {
-  sentrySettings: {
+  // production website domain
+  domain: 'https://docs.mapbox.com',
+  // do no disable sentry by default
+  disableSentry: false,
+  // default Sentry options, docs-subdomain project
+  sentry: {
     dsn: 'https://6ba8cfeeedad4fb7acb8576f0fd6e266@sentry.io/1384508'
   },
-  mapboxSettings: {}
+  // do not disable web-analytics by default
+  disableWebAnalytics: false,
+  // default web-analytics options, disable Drift by default
+  webAnalytics: {
+    segmentIntegrations: {
+      Drift: false
+    }
+  }
 };
 
 AnalyticsShell.propTypes = {
@@ -53,8 +72,12 @@ AnalyticsShell.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
-  sentrySettings: PropTypes.shape({
+  domain: PropTypes.string,
+  sentry: PropTypes.shape({
+    // Customize Sentry options: https://docs.sentry.io/error-reporting/configuration/?platform=browser
     dsn: PropTypes.string
   }),
-  mapboxSettings: PropTypes.object
+  webAnalytics: PropTypes.object, // Customize web-analytics options: https://github.com/mapbox/web-analytics
+  disableSentry: PropTypes.bool, // If true, Sentry will not initialize.
+  disableWebAnalytics: PropTypes.bool // If true, Mapbox analytics (initializeMapboxAnalytics) will not initialize.
 };
