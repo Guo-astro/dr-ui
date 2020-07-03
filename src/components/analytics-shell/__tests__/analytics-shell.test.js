@@ -1,7 +1,7 @@
 import renderer from 'react-test-renderer';
-import { testCases } from './pageshell-test-cases.js';
+import { testCases } from './analytics-shell-test-cases.js';
 
-describe('PageShell', () => {
+describe('AnalyticsShell', () => {
   describe(testCases.basic.description, () => {
     let testCase;
     let wrapper;

@@ -10,7 +10,7 @@ const environment =
       : 'staging'
     : undefined;
 
-export default class PageShell extends React.Component {
+export default class AnalyticsShell extends React.Component {
   componentDidMount() {
     // initialize analytics
     if (window && window.initializeMapboxAnalytics) {
@@ -41,14 +41,14 @@ export default class PageShell extends React.Component {
   }
 }
 
-PageShell.defaultProps = {
+AnalyticsShell.defaultProps = {
   sentrySettings: {
     dsn: 'https://6ba8cfeeedad4fb7acb8576f0fd6e266@sentry.io/1384508'
   },
   mapboxSettings: {}
 };
 
-PageShell.propTypes = {
+AnalyticsShell.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
