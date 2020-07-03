@@ -1,6 +1,5 @@
 {
   "Features": [
-    "Feedback",
     "LevelIndicator",
     "Note",
     "RelatedPage",
@@ -24,6 +23,14 @@
     "NumberedCodeSnippet",
     "ToggleableCodeBlock"
   ],
+  "Images": [
+    "BookImage",
+    "BookletImage",
+    "ContactImage",
+    "ExampleImage",
+    "PlaygroundImage",
+    "TroubleshootImage"
+  ],
   "Layout": [
     "BackToTopButton",
     "GlossaryCard",
@@ -42,14 +49,7 @@
     "TopbarSticker",
     "Card",
     "CardContainer",
-    "ExamplesPage"
-  ],
-  "Images": [
-    "BookImage",
-    "BookletImage",
-    "ContactImage",
-    "ExampleImage",
-    "PlaygroundImage",
-    "TroubleshootImage"
+    "ExamplesPage",
+    "Feedback"
   ]
 }

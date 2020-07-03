@@ -34,8 +34,8 @@ export default class Content extends React.Component {
     );
   };
   render() {
-    const { children, layout, frontMatter } = this.props;
-    const { hideFeedback } = this.props.frontMatter;
+    const { children, frontMatter } = this.props;
+    const { hideFeedback, layout } = this.props.frontMatter;
 
     const isExamplesIndex = layout === 'example' && frontMatter.navOrder;
 
@@ -64,7 +64,6 @@ export default class Content extends React.Component {
 
 Content.propTypes = {
   children: PropTypes.node,
-  layout: PropTypes.string.isRequired,
   frontMatter: PropTypes.shape({
     title: PropTypes.string.isRequired,
     hideFeedback: PropTypes.bool,

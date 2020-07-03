@@ -5,6 +5,8 @@ import { buildSections, buildScollspyItems, buildToc } from './helpers';
 
 export default class SidebarPage extends React.PureComponent {
   render() {
+    const { headings } = this.props;
+    if (!headings) return <div />;
     const sections = buildSections(this.props.headings);
     return (
       <div className="mx24 py12">
@@ -20,5 +22,5 @@ export default class SidebarPage extends React.PureComponent {
 }
 
 SidebarPage.propTypes = {
-  headings: PropTypes.array.isRequired
+  headings: PropTypes.array
 };

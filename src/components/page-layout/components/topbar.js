@@ -16,7 +16,7 @@ export default class PageLayoutTopbar extends React.Component {
       <Wrapper>
         <div className="limiter">
           <div className="grid">
-            <div className="col col--4-mm col--12">
+            <div className="col col--4-mm col--12" style={{ minHeight: 50 }}>
               <div className="ml24-mm pt12">
                 <ProductMenu
                   productName={title || SITE}

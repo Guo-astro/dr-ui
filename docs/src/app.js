@@ -56,7 +56,6 @@ export default class App extends React.Component {
       <PageLayout
         topBarSticker={false}
         parentPath="/dr-ui/"
-        layout="example"
         topics={topics}
         frontMatter={{
           title: 'Overview',

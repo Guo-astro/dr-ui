@@ -50,7 +50,6 @@ export default class Sidebar extends React.Component {
 
   getSidebarContent = () => {
     const {
-      layout,
       location,
       navigation,
       frontMatter,
@@ -59,6 +58,8 @@ export default class Sidebar extends React.Component {
       headings,
       topics
     } = this.props;
+
+    const { layout, navOrder } = frontMatter;
 
     switch (layout) {
       case 'accordion':
@@ -80,7 +81,7 @@ export default class Sidebar extends React.Component {
         return (
           <SidebarExamples
             topics={topics[parentPath].topics}
-            hideSubItems={frontMatter.navOrder ? true : false}
+            hideSubItems={navOrder ? true : false}
             sectionPath={parentPath}
           />
         );
@@ -117,13 +118,12 @@ Sidebar.propTypes = {
     accordion: PropTypes.object
   }).isRequired,
   headings: PropTypes.array,
-  layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full']),
-  frontMatter: PropTypes.object.isRequired,
+  frontMatter: PropTypes.shape({
+    layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full']),
+    navOrder: PropTypes.number,
+    headings: PropTypes.array
+  }).isRequired,
   children: PropTypes.node,
   parentPath: PropTypes.string,
   topics: PropTypes.object
-};
-
-Sidebar.defaultProps = {
-  layout: 'page'
 };

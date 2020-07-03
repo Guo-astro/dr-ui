@@ -21,6 +21,7 @@ export default class Basic extends React.Component {
         }}
         frontMatter={{
           title: 'Overview',
+          layout: 'page',
           headings: [
             { text: 'Section 1', slug: 'section-1', level: 2 },
             { text: 'Section 2', slug: 'section-2', level: 2 }
