@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 export default class SidebarExamples extends React.PureComponent {
   render() {
-    const { topics, hideSubItems } = this.props;
+    const { topics, hideSubItems, includeFilterBar } = this.props;
     return (
       <div className="none block-mm py12">
         <SectionedNavigation
           hideSubItems={hideSubItems}
+          includeFilterBar={includeFilterBar}
           sections={topics.map((topic) => {
             return {
               title: topic.name,
@@ -28,5 +29,6 @@ SidebarExamples.defaultProps = {
 
 SidebarExamples.propTypes = {
   topics: PropTypes.array,
-  hideSubItems: PropTypes.bool
+  hideSubItems: PropTypes.bool,
+  includeFilterBar: PropTypes.bool
 };

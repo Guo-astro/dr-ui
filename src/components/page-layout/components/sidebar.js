@@ -56,7 +56,8 @@ export default class Sidebar extends React.Component {
       children,
       parentPath,
       headings,
-      topics
+      topics,
+      includeFilterBar
     } = this.props;
 
     const { layout, navOrder } = frontMatter;
@@ -83,6 +84,7 @@ export default class Sidebar extends React.Component {
             topics={topics[parentPath].topics}
             hideSubItems={navOrder ? true : false}
             sectionPath={parentPath}
+            includeFilterBar={includeFilterBar}
           />
         );
     }
@@ -125,5 +127,6 @@ Sidebar.propTypes = {
   }).isRequired,
   children: PropTypes.node,
   parentPath: PropTypes.string,
-  topics: PropTypes.object
+  topics: PropTypes.object,
+  includeFilterBar: PropTypes.bool
 };

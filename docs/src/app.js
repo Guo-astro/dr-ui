@@ -56,6 +56,7 @@ export default class App extends React.Component {
     });
     return (
       <PageLayout
+        includeFilterBar={true}
         topBarSticker={false}
         parentPath="/dr-ui/"
         topics={topics}

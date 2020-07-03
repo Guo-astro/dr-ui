@@ -82,7 +82,8 @@ PageLayout.propTypes = {
     }).isRequired
   }).isRequired,
   AppropriateImage: PropTypes.func, // pass the local AppropriateImage component to use with "example" layout
-  topBarSticker: PropTypes.bool // disable TopBarSticker
+  topBarSticker: PropTypes.bool, // disable TopBarSticker
+  includeFilterBar: PropTypes.bool
 };
 
 PageLayout.defaultProps = {
@@ -90,5 +91,6 @@ PageLayout.defaultProps = {
   frontMatter: {
     layout: 'page',
     hideTitle: false
-  }
+  },
+  includeFilterBar: false
 };
