@@ -20,6 +20,7 @@ export function buildMeta(frontMatter, pathname, navigation) {
 }
 
 export function findHasSection(navigation, pathname) {
+  if (!navigation || !pathname) return;
   return navigation.hierarchy &&
     navigation.hierarchy[pathname] &&
     navigation.hierarchy[pathname].section
@@ -28,9 +29,8 @@ export function findHasSection(navigation, pathname) {
 }
 
 export function findParentPath(navigation, pathname) {
-  return navigation &&
-    pathname &&
-    navigation.hierarchy &&
+  if (!navigation || !pathname) return;
+  return navigation.hierarchy &&
     navigation.hierarchy[pathname] &&
     navigation.hierarchy[pathname].parent
     ? navigation.hierarchy[pathname].parent

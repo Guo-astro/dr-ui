@@ -1,8 +1,6 @@
 import React from 'react';
 import components from './data/components'; // eslint-disable-line
 import ComponentSection from './components/component-section';
-import Topbar from '../../src/components/topbar';
-import ProductMenu from '../../src/components/product-menu';
 import OverviewHeader from '../../src/components/overview-header';
 import Note from '../../src/components/note';
 import PageLayout from '../../src/components/page-layout';
@@ -55,66 +53,56 @@ export default class App extends React.Component {
       );
     });
     return (
-      <div>
-        <Topbar>
-          <div className="limiter">
-            <div className="grid">
-              <div className="col col--4-mm col--12">
-                <div className="ml18-mm pt12" style={{ height: 52 }}>
-                  <ProductMenu productName="Dr. UI" homePage="/dr-ui/" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </Topbar>
-        <div>
-          <PageLayout
-            parentPath="/dr-ui/"
-            layout="example"
-            topics={topics}
-            frontMatter={{
-              title: 'Overview',
-              description: 'UI components for Mapbox documentation projects.',
-              hideFeedback: true
-            }}
-            constants={{ SITE: 'dr-ui' }}
-            navigiation={{}}
-          >
-            <div className="prose">
-              <OverviewHeader
-                features={[
-                  'React components',
-                  'Support for IE11 and all modern browsers'
-                ]}
-                image={<div />}
-                title="Dr. UI"
-                version={version}
-                changelogLink="https://github.com/mapbox/dr-ui/blob/master/CHANGELOG.md"
-                installLink="https://github.com/mapbox/dr-ui/blob/master/README.md"
-                ghLink="https://github.com/mapbox/dr-ui"
-              />
+      <PageLayout
+        parentPath="/dr-ui/"
+        layout="example"
+        topics={topics}
+        frontMatter={{
+          title: 'Overview',
+          description: 'UI components for Mapbox documentation projects.',
+          hideFeedback: true,
+          layout: 'example'
+        }}
+        location={{ pathname: '/dr-ui/' }}
+        constants={{
+          SITE: 'dr-ui',
+          BASEURL: '/dr-ui',
+          FORWARD_EVENT_WEBHOOK: { production: 'null', staging: 'null' }
+        }}
+        navigation={{}}
+      >
+        <div className="prose">
+          <OverviewHeader
+            features={[
+              'React components',
+              'Support for IE11 and all modern browsers'
+            ]}
+            image={<div />}
+            title="Dr. UI"
+            version={version}
+            changelogLink="https://github.com/mapbox/dr-ui/blob/master/CHANGELOG.md"
+            installLink="https://github.com/mapbox/dr-ui/blob/master/README.md"
+            ghLink="https://github.com/mapbox/dr-ui"
+          />
 
-              <p>
-                Pronounced "Doctor UI". <strong>D</strong>ocumentation{' '}
-                <strong>R</strong>eact <strong>UI</strong> components.{' '}
-                <a href="https://mapbox.github.io/mr-ui/">See @mapbox/mr-ui</a>.
-              </p>
+          <p>
+            Pronounced "Doctor UI". <strong>D</strong>ocumentation{' '}
+            <strong>R</strong>eact <strong>UI</strong> components.{' '}
+            <a href="https://mapbox.github.io/mr-ui/">See @mapbox/mr-ui</a>.
+          </p>
 
-              <p>UI components for Mapbox documentation projects.</p>
+          <p>UI components for Mapbox documentation projects.</p>
 
-              <Note>
-                <p>
-                  This project is for internal Mapbox usage. The code is open
-                  source and we appreciate bug reports; but we will only
-                  consider feature requests and pull requests from Mapbox
-                  developers.
-                </p>
-              </Note>
-            </div>
-            {componentEls}
-          </PageLayout>
+          <Note>
+            <p>
+              This project is for internal Mapbox usage. The code is open source
+              and we appreciate bug reports; but we will only consider feature
+              requests and pull requests from Mapbox developers.
+            </p>
+          </Note>
         </div>
-      </div>
+        {componentEls}
+      </PageLayout>
     );
   }
 }
