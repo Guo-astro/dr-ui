@@ -1,3 +1,11 @@
+/*---
+title: dr-ui
+description: UI components for Mapbox documentation projects.
+layout: example
+hideFeedback: true
+hideTitle: true
+---*/
+
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import App from '../app';
@@ -18,7 +26,7 @@ export default class Page extends React.Component {
           <meta name="robots" content="noindex" />
           <title>Dr. UI</title>
         </Helmet>
-        <App />
+        <App {...this.props} />
       </div>
     );
   }

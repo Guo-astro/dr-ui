@@ -5,6 +5,8 @@ import OverviewHeader from '../../src/components/overview-header';
 import Note from '../../src/components/note';
 import PageLayout from '../../src/components/page-layout';
 import categories from './categories.json';
+import navigation from '@mapbox/batfish/data/navigation'; // eslint-disable-line
+import constants from './constants';
 
 const slug = (string) => string.toLowerCase();
 
@@ -57,19 +59,10 @@ export default class App extends React.Component {
         topBarSticker={false}
         parentPath="/dr-ui/"
         topics={topics}
-        frontMatter={{
-          title: 'Overview',
-          description: 'UI components for Mapbox documentation projects.',
-          hideFeedback: true,
-          layout: 'example'
-        }}
-        location={{ pathname: '/dr-ui/' }}
-        constants={{
-          SITE: 'dr-ui',
-          BASEURL: '/dr-ui',
-          FORWARD_EVENT_WEBHOOK: { production: 'null', staging: 'null' }
-        }}
-        navigation={{}}
+        frontMatter={this.props.frontMatter}
+        location={this.props.location}
+        constants={constants}
+        navigation={navigation}
       >
         <div className="prose">
           <OverviewHeader

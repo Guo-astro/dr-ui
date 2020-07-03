@@ -60,7 +60,8 @@ PageLayout.propTypes = {
   children: PropTypes.node,
   frontMatter: PropTypes.shape({
     hideFeedback: PropTypes.bool,
-    layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full'])
+    layout: PropTypes.oneOf(['page', 'accordion', 'example', 'full']),
+    hideTitle: PropTypes.bool
   }),
   location: PropTypes.object.isRequired,
   sidebarTheme: PropTypes.string,
@@ -87,6 +88,7 @@ PageLayout.propTypes = {
 PageLayout.defaultProps = {
   sidebarTheme: 'bg-gray-faint',
   frontMatter: {
-    layout: 'page'
+    layout: 'page',
+    hideTitle: false
   }
 };

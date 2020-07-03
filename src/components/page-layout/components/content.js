@@ -35,7 +35,7 @@ export default class Content extends React.Component {
   };
   render() {
     const { children, frontMatter } = this.props;
-    const { hideFeedback, layout } = this.props.frontMatter;
+    const { hideFeedback, layout, hideTitle, title } = frontMatter;
 
     const isExamplesIndex = layout === 'example' && frontMatter.navOrder;
 
@@ -49,9 +49,7 @@ export default class Content extends React.Component {
           })}
         >
           <div className="prose">
-            {frontMatter.title !== 'Overview' && (
-              <h1 className="txt-fancy">{frontMatter.title}</h1>
-            )}
+            {!hideTitle && <h1 className="txt-fancy">{title}</h1>}
             {children}
             {!isExamplesIndex && !hideFeedback ? this.renderFeedback() : ''}
           </div>
@@ -68,7 +66,8 @@ Content.propTypes = {
     title: PropTypes.string.isRequired,
     hideFeedback: PropTypes.bool,
     navOrder: PropTypes.number,
-    layout: PropTypes.string
+    layout: PropTypes.string,
+    hideTitle: PropTypes.bool
   }).isRequired,
   location: PropTypes.object.isRequired,
   parentPath: PropTypes.string,
