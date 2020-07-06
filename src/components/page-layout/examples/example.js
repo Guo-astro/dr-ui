@@ -35,12 +35,11 @@ export default class Basic extends React.Component {
           description: 'Lots of handy examples.',
           navOrder: 1
         }}
-        parentPath="/PageLayout/"
         AppropriateImage={AppropriateImage}
         navigation={{
           hierarchy: {
             '/PageLayout/': {
-              parent: '/dr-ui/',
+              parent: '/PageLayout/',
               title: 'Demo'
             }
           },

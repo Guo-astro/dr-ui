@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
-import { version } from '../package.json'; // eslint-disable-line
+// import { version } from '../package.json'; // eslint-disable-line
 
 const environment =
   typeof window !== 'undefined'
@@ -29,7 +29,7 @@ export default class AnalyticsShell extends React.Component {
     if (!disableSentry) {
       Sentry.init({
         ...sentry,
-        release: version,
+        // release: version,
         environment
       });
     }
