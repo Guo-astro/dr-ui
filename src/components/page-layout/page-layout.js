@@ -39,7 +39,7 @@ export default class PageLayout extends React.Component {
           <div className="grid">
             {layout !== 'full' && (
               <div className={`col col--4-mm col--12 ${sidebarTheme}`}>
-                <Sidebar {...this.props} />
+                <Sidebar parentPath={parentPath} {...this.props} />
               </div>
             )}
             <div
@@ -47,7 +47,7 @@ export default class PageLayout extends React.Component {
                 'col--8-mm': layout !== 'full'
               })}
             >
-              <Content {...this.props} />
+              <Content parentPath={parentPath} {...this.props} />
             </div>
           </div>
         </div>
@@ -73,6 +73,7 @@ PageLayout.propTypes = {
     path: PropTypes.string,
     accordion: PropTypes.object
   }).isRequired,
+  topics: PropTypes.object,
   constants: PropTypes.shape({
     SITE: PropTypes.string.isRequired,
     BASEURL: PropTypes.string.isRequired,
