@@ -39,7 +39,11 @@ export default class PageLayout extends React.Component {
           <div className="grid">
             {layout !== 'full' && (
               <div className={`col col--4-mm col--12 ${sidebarTheme}`}>
-                <Sidebar parentPath={parentPath} {...this.props} />
+                <Sidebar
+                  {...this.props}
+                  navigation={switchedNavigation}
+                  parentPath={parentPath}
+                />
               </div>
             )}
             <div
@@ -47,7 +51,7 @@ export default class PageLayout extends React.Component {
                 'col--8-mm': layout !== 'full'
               })}
             >
-              <Content parentPath={parentPath} {...this.props} />
+              <Content {...this.props} parentPath={parentPath} />
             </div>
           </div>
         </div>
