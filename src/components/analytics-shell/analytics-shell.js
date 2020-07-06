@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
-import { version } from '../../../package.json';
+import { version } from '../package.json'; // eslint-disable-line
 
 const environment =
   typeof window !== 'undefined'
