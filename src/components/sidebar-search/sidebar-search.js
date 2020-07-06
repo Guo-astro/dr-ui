@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import Fuse from 'fuse.js';
 import classnames from 'classnames';
+import * as Sentry from '@sentry/browser';
+import { routeTo } from '@mapbox/batfish/modules/route-to';
 
 export default class SidebarSearch extends React.Component {
   constructor(props) {
@@ -32,17 +34,22 @@ export default class SidebarSearch extends React.Component {
 
   // perform these functions when the users selects a menu item
   handleResultClick = (selection) => {
-    // track click so we can guage usage of this feature
-    if (window && window.analytics) {
-      analytics.track('Clicked link from @mapbox/dr-ui/sidebar-search', {
-        query: this.state.filter,
-        clicked: selection.url
-      });
+    try {
+      // track click so we can guage usage of this feature
+      if (window && window.analytics) {
+        analytics.track('Clicked link from @mapbox/dr-ui/sidebar-search', {
+          query: this.state.filter,
+          clicked: selection.url
+        });
+      }
+      // open selection in current window
+      routeTo(selection.url);
+      // clear search
+      this.setState({ filter: '' });
+    } catch (err) {
+      Sentry.setContext('selection', selection);
+      Sentry.captureException(err);
     }
-    // open selection in current window
-    window.open(selection.path, '_self');
-    // clear search
-    this.setState({ filter: '' });
   };
 
   render() {
