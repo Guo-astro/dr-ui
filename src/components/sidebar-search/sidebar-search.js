@@ -42,8 +42,8 @@ export default class SidebarSearch extends React.Component {
           clicked: selection.url
         });
       }
-      // open selection in current window
-      routeTo(selection.url);
+      // handle click function
+      this.props.handleClick(selection);
       // clear search
       this.setState({ filter: '' });
     } catch (err) {
@@ -100,7 +100,10 @@ export default class SidebarSearch extends React.Component {
 SidebarSearch.default = {
   title: 'Search',
   keys: ['title'],
-  themeWrapper: 'none block-mm'
+  themeWrapper: 'none block-mm',
+  handleClick: (selection) => {
+    routeTo(selection.url);
+  }
 };
 
 SidebarSearch.propTypes = {
@@ -112,7 +115,8 @@ SidebarSearch.propTypes = {
   ).isRequired,
   keys: PropTypes.array.isRequired,
   title: PropTypes.string,
-  themeWrapper: PropTypes.string
+  themeWrapper: PropTypes.string,
+  handleClick: PropTypes.func
 };
 
 class Input extends React.Component {

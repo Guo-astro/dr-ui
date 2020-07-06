@@ -1,33 +1,31 @@
 /*
-Basic.
+Basic with custom handleClick function.
 */
 import React from 'react';
 import SidebarSearch from '../sidebar-search';
+import categories from '../../../../docs/src/categories.json';
+
+const items = Object.keys(categories).reduce((arr, category) => {
+  const components = categories[category].map((comp) => ({
+    title: comp,
+    category,
+    url: `https://mapbox.github.io/dr-ui/#${comp.toLowerCase()}`
+  }));
+  arr = arr.concat(components);
+  return arr;
+}, []);
 
 export default class Basic extends React.Component {
   render() {
     return (
       <SidebarSearch
-        items={[
-          {
-            title: "Old Man's War",
-            url: '#',
-            author: {
-              firstName: 'John',
-              lastName: 'Scalzi'
-            }
-          },
-          {
-            title: 'The Lock Artist',
-            url: '#',
-            author: {
-              firstName: 'Steve',
-              lastName: 'Hamilton'
-            }
-          }
-        ]}
-        title="Search my library of rare books"
-        keys={['title', 'author.firstName']}
+        items={items}
+        title="Search dr-ui components"
+        handleClick={(selection) => {
+          console.log(selection.url);
+          window.open(selection.url, '_self');
+        }}
+        keys={['title', 'category']}
       />
     );
   }

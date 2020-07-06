@@ -16,7 +16,7 @@ exports[`SidebarSearch Basic renders as expected 1`] = `
       htmlFor="api-reference-search-input"
       id="api-reference-search-label"
     >
-      Search my library of rare books
+      Search dr-ui components
     </label>
     <input
       aria-activedescendant={null}
@@ -30,7 +30,7 @@ exports[`SidebarSearch Basic renders as expected 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
-      placeholder="Search my library of rare books"
+      placeholder="Search dr-ui components"
       value=""
     />
   </div>
